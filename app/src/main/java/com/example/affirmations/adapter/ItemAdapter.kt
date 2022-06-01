@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.affirmations.R
@@ -14,9 +15,10 @@ class ItemAdapter(
     private val dataSet: List<Affirmation>
 ) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
-    //contiene referencias a las vistas individuales dentro de un diseño de elemento de lista
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+        //contiene referencias a las vistas individuales dentro de un diseño de elemento de lista
         val textView: TextView = view.findViewById(R.id.item_title)
+        val imageView: ImageView = view.findViewById(R.id.item_image)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -31,6 +33,7 @@ class ItemAdapter(
         // El administrador de diseño llama a este método para reemplazar el contenido de una vista de elementos de lista.
         val item = dataSet[position]
         holder.textView.text = context.resources.getString(item.stringResourceId)
+        holder.imageView.setImageResource(item.imageResourceId)
     }
 
     //debe mostrar el tamaño de tu conjunto de datos
